@@ -1,3 +1,9 @@
+media_root/
+static_root/
+config/settings_local.py
+config/settings_production.py
+venv/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
