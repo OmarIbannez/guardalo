@@ -1,0 +1,41 @@
+#bookmarks-container .card-image {
+    height: 7rem;
+}
+
+#bookmarks-container .card-content {
+    padding: 10px 20px;
+}
+    #bookmarks-container .card-content p {
+        overflow: hidden;
+    }
+        #bookmarks-container .card-content p > a {
+            display: -webkit-box;
+            height: 25px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    #bookmarks-container .card-content .card-title {
+        display: -webkit-box;
+        font-size: 1rem;
+        height: 34px;
+        -webkit-line-clamp: 2;
+        line-height: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 500;
+        color: #252830 !important;
+    }
+    #bookmarks-container .card .card-image img {
+        height: 100%;
+        width: 100%;
+    }
+    #bookmarks-container .card .card-action {
+        padding: .5rem;
+    }
+    #bookmarks-container .card .card-reveal .card-title {
+        font-size: 1rem;
+    }
+
+#bookmarks-area .row .col {
+    width: 14rem;
+}

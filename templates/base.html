@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <title>Guardalo</title>
+        <script type="text/javascript" src="{% static 'js/vendor/jquery-1.12.3.min.js' %}"></script>
+        {% include 'backbone-js.html' %}
+        <!-- Materializecss  -->
+        <link type="text/css" rel="stylesheet" href="{% static 'css/vendor/materialize/materialize.min.css' %}"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{% static 'css/common/common.css' %}"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{% static 'css/common/sidebar.css' %}"  media="screen,projection"/>
+        <!-- Compiled and minified CSS -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        {% block extra_css %}{% endblock %}
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body class="dark-background">
+    <!-- Main container -->
+    <div class="container wide-container">
+        <div class="section">
+            <div class="row">
+                {% include 'sidebar.html' %}
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <!--  Scripts-->
+    <script type="text/javascript" src="{% static 'js/vendor/materialize/materialize.min.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+    </body>
+</html>

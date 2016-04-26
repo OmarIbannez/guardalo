@@ -1,0 +1,15 @@
+<div class="sidebar col s12 m12 l2">
+    <div id="folders-area"></div>
+    <h5 class="section-name"><a href="{% url 'logout' %}" class="blue-grey-text text-darken-1">LOGOUT</a></h5>
+</div>
+
+
+<script id='folders-template' type="text/template">
+    <h5 class="section-name">Folders</h5>
+    <ul id="folders-container"></ul>
+</script>
+
+
+<script id="folder-template" type="text/template">
+    <a class="white-text light" href="#"><%= name %></a>
+</script>

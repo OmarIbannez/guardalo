@@ -1,0 +1,8 @@
+.dark-background {
+    background-color: #252830;
+}
+
+.wide-container {
+    max-width: 100% !important;
+    width: 90% !important;
+}

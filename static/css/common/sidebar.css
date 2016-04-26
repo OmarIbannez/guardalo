@@ -1,0 +1,10 @@
+.sidebar {
+    margin: 1rem;
+}
+    .sidebar .section-name {
+        color: #51586a;
+        font-weight: 300;
+        text-transform: uppercase;
+        font-size: 85%;
+        letter-spacing: 1px;
+    }
