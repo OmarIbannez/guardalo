@@ -1,11 +1,16 @@
 <div class="sidebar col s12 m12 l2">
     <div id="folders-area"></div>
-    <h5 class="section-name"><a href="{% url 'logout' %}" class="blue-grey-text text-darken-1">LOGOUT</a></h5>
+    <ul>
+        <li><a href="{% url 'settings' %}" class="blue-grey-text text-darken-1 section-name">SETTINGS</a></li>
+        <li><a href="https://twitter.com/omaribannez/" class="blue-grey-text text-darken-1 section-name">CONTACT</a></li>
+        <li><a href="{% url 'logout' %}" class="blue-grey-text text-darken-1 section-name">LOGOUT</a></li>
+    </ul>
 </div>
 
 
 <script id='folders-template' type="text/template">
     <h5 class="section-name">Folders</h5>
+    <a href="#" class="white-text light" id="show-all">All</a>
     <ul id="folders-container"></ul>
 </script>
 

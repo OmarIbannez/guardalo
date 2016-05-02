@@ -1,0 +1,9 @@
+.card-content {
+    margin-bottom: 2rem;
+}
+
+.card-content .import-bookmarks h5,
+.card-content .export-bookmarks h5 {
+    font-size: 1rem;
+    color: #252830;
+}

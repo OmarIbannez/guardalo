@@ -19,4 +19,17 @@ var FoldersView = Marionette.CompositeView.extend({
     template: '#folders-template',
     childView: FolderView,
     childViewContainer: '#folders-container',
+
+    ui: {
+        'show_all': '#show-all'
+    },
+
+    events: {
+        'click @ui.show_all': 'showAll'
+    },
+
+    showAll: function(event) {
+        event.preventDefault();
+        App.vent.trigger('bookmarks:showAll');
+    }
 });
