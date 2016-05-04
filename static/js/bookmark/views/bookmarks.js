@@ -2,6 +2,24 @@
 var BookmarkView = Marionette.ItemView.extend({
     template: '#bookmark-template',
     className: 'col',
+
+    ui: {
+        openMenu: '.open-menu'
+    },
+
+    events: {
+        'click @ui.openMenu': 'openMenu'
+    },
+
+    openMenu: function(event) {
+        event.preventDefault();
+    },
+
+    templateHelpers: function () {
+        return {
+            folders: App.folders.toJSON()
+        };
+    },
 });
 
 

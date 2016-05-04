@@ -32,8 +32,15 @@
     #bookmarks-container .card .card-action {
         padding: .5rem;
     }
+        #bookmarks-container .card .card-action .activator {
+            cursor: pointer;
+        }
     #bookmarks-container .card .card-reveal .card-title {
         font-size: 1rem;
+    }
+    #bookmarks-container .card .card-reveal .remove-bookmark {
+        display: table;
+        margin: 0 auto;
     }
 
 #bookmarks-area .row .col {

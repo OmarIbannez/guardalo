@@ -16,17 +16,19 @@ App.addInitializer(function(options) {
         },
     });
 
-    App.bookmarks_area.show(new BookmarksView({collection: App.bookmarks}));
-
     /* Folders */
     App.folders = new Folders();
     App.folders.fetch({
+        success: function() {
+            App.folders_area.show(new FoldersView({collection: App.folders}));
+            App.bookmarks_area.show(new BookmarksView({collection: App.bookmarks}));
+        },
         error: function(model, error, options) {
             Materialize.toast(error.responseJSON.detail, 4000);
         },
     });
 
-    App.folders_area.show(new FoldersView({collection: App.folders}));
+
 });
 
 // Start Marionette application

@@ -16,7 +16,7 @@
 <script type="text/javascript" src="{% static 'js/bookmark/init.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bookmark/models.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bookmark/collections.js' %}"></script>
-<!-- Quote JS --->
+<!-- Bookmark JS --->
 <script type="text/javascript" src="{% static 'js/bookmark/views/bookmarks.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bookmark/views/folders.js' %}"></script>
 <!-- App Initializer -->
@@ -25,6 +25,7 @@
 
 {% block content %}
 <div id="bookmarks-area"></div>
+<div id="menu-area"></div>
 
 <script id='bookmarks-template' type="text/template">
     <div class="row" id="bookmarks-container"></div>
@@ -40,12 +41,23 @@
         </div>
 
         <div class="card-action">
-            <a href="#" class="blue-grey-text"><i class="material-icons right">more_vert</i></a>
+            <span class="light"><%= folder_name %></span>
+            <a href="#" class="blue-grey-text activator open-menu"><i class="material-icons right">more_vert</i></a>
         </div>
 
         <div class="card-reveal" style="display: none; transform: translateY(0px);">
-            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i><%= title %></span>
-            <p><%= description %></p>
+            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+            <div class="input-field">
+                <select class="browser-default">
+                    <% _.each(folders, function(fld) { %>
+                        <option value="<%= fld.id %>" <% if (fld.id == folder) { %> selected="selected" <% } %>>
+                            <%= fld.name %>
+                        </option>
+                    <% }); %>
+                </select>
+                <label class="blue-text text-darken-3 active">Move to</label>
+            </div>
+            <a href="#" class="remove-bookmark red-text">remove bookmark</a>
         </div>
     </div>
 </script>

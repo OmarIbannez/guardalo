@@ -4,6 +4,7 @@ from bookmark.models import Bookmark, Folder
 
 class BookmarkSerializer(serializers.ModelSerializer):
     thumbnail = serializers.SerializerMethodField()
+    folder_name = serializers.SerializerMethodField()
 
     class Meta:
         model = Bookmark
@@ -13,7 +14,9 @@ class BookmarkSerializer(serializers.ModelSerializer):
             'title',
             'description',
             'thumbnail',
-            'owner'
+            'owner',
+            'folder',
+            'folder_name'
         )
 
     def get_thumbnail(self, obj):
@@ -21,6 +24,8 @@ class BookmarkSerializer(serializers.ModelSerializer):
                 return '/static/img/default.jpg'
             return obj.thumbnail
 
+    def get_folder_name(self, obj):
+        return obj.folder.name
 
 class FolderSerializer(serializers.ModelSerializer):
 
