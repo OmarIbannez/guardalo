@@ -22,8 +22,18 @@ urlpatterns = [
         name='bookmark-list'
     ),
     url(
+        r'^api/(?P<pk>\d+)$',
+        BookmarkViewSet.as_view(detail_methods),
+        name='bookmark-detail'
+    ),
+    url(
         r'^folder/api/$',
         FolderViewSet.as_view(list_methods),
         name='folder-list'
+    ),
+    url(
+        r'^folder/api/(?P<pk>\d+)$',
+        FolderViewSet.as_view(detail_methods),
+        name='folder-detail'
     ),
 ]

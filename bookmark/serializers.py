@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from bookmark.models import Bookmark, Folder
+from rest_framework.fields import CurrentUserDefault
 
 
 class BookmarkSerializer(serializers.ModelSerializer):
@@ -25,13 +26,18 @@ class BookmarkSerializer(serializers.ModelSerializer):
             return obj.thumbnail
 
     def get_folder_name(self, obj):
-        return obj.folder.name
+        if obj.folder: return obj.folder.name
 
 class FolderSerializer(serializers.ModelSerializer):
+    owner = serializers.PrimaryKeyRelatedField(
+        read_only=True,
+        default=serializers.CurrentUserDefault()
+    )
 
     class Meta:
         model = Folder
         fields = (
             'id',
-            'name'
+            'name',
+            'owner'
         )

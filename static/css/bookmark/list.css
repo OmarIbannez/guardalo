@@ -9,13 +9,13 @@
         overflow: hidden;
     }
         #bookmarks-container .card-content p > a {
-            display: -webkit-box;
+            display: block;
             height: 25px;
             overflow: hidden;
             text-overflow: ellipsis;
         }
     #bookmarks-container .card-content .card-title {
-        display: -webkit-box;
+        display: block;
         font-size: 1rem;
         height: 34px;
         -webkit-line-clamp: 2;

@@ -4,15 +4,16 @@ var BookmarkView = Marionette.ItemView.extend({
     className: 'col',
 
     ui: {
-        openMenu: '.open-menu'
+        openMenu: '.open-menu',
+        removeBookmark: '.remove-bookmark',
+        bookmarkFolder: '.bookmark-folder',
+        folderName: '.folder-name'
     },
 
     events: {
-        'click @ui.openMenu': 'openMenu'
-    },
-
-    openMenu: function(event) {
-        event.preventDefault();
+        'click @ui.openMenu': 'openMenu',
+        'click @ui.removeBookmark': 'removeBookmark',
+        'change @ui.bookmarkFolder': 'updateBookmarkFolder'
     },
 
     templateHelpers: function () {
@@ -20,6 +21,23 @@ var BookmarkView = Marionette.ItemView.extend({
             folders: App.folders.toJSON()
         };
     },
+
+    openMenu: function(event) {
+        event.preventDefault();
+    },
+
+    removeBookmark: function(event) {
+        event.preventDefault();
+        this.model.destroy();
+    },
+
+    updateBookmarkFolder: function() {
+        folder = this.ui.bookmarkFolder.find('option:selected').val();
+        folder_name = this.ui.bookmarkFolder.find('option:selected').text();
+        this.model.set({'folder': folder});
+        this.model.save();
+        this.ui.folderName.text(folder_name);
+    }
 });
 
 

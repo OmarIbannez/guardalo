@@ -41,14 +41,14 @@
         </div>
 
         <div class="card-action">
-            <span class="light"><%= folder_name %></span>
+            <span class="light folder-name"><%= folder_name %></span>
             <a href="#" class="blue-grey-text activator open-menu"><i class="material-icons right">more_vert</i></a>
         </div>
 
         <div class="card-reveal" style="display: none; transform: translateY(0px);">
             <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
             <div class="input-field">
-                <select class="browser-default">
+                <select class="browser-default bookmark-folder">
                     <% _.each(folders, function(fld) { %>
                         <option value="<%= fld.id %>" <% if (fld.id == folder) { %> selected="selected" <% } %>>
                             <%= fld.name %>

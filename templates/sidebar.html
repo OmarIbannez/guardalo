@@ -9,7 +9,18 @@
 
 
 <script id='folders-template' type="text/template">
-    <h5 class="section-name">Folders<a href="#" class="grey-text text-darken-2"><i class="material-icons tiny">add</i></a></h5>
+    <div class='sidebar-header'>
+        <h5 class="section-name">
+            Folders
+            <a href="#" class="grey-text text-darken-2" id="toggle-folder-form">
+                <i class="material-icons tiny">add</i>
+            </a>
+        </h5>
+        <div id="folder-form-section" style="display:none;">
+            <input type="text" class="white-text" id="folder-input" />
+            <a href="#" id="save-folder">add</a>
+        </div>
+    </div>
     <a href="#" class="white-text light" id="show-all">All</a>
     <ul id="folders-container"></ul>
 </script>
