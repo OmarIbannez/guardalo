@@ -22,6 +22,10 @@ var BookmarkView = Marionette.ItemView.extend({
         };
     },
 
+    initialize: function(options) {
+        this.listenTo(App.vent, 'bookmark:addNewFolder', this.addNewFolder);
+    },
+
     openMenu: function(event) {
         event.preventDefault();
     },
@@ -37,6 +41,14 @@ var BookmarkView = Marionette.ItemView.extend({
         this.model.set({'folder': folder});
         this.model.save();
         this.ui.folderName.text(folder_name);
+    },
+
+    addNewFolder: function(folder) {
+        $folder = $('<option>', {
+            value: folder.get('id'),
+            text : folder.get('name'),
+        });
+        this.ui.bookmarkFolder.append($folder);
     }
 });
 

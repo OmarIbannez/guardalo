@@ -31,9 +31,17 @@
     }
     #bookmarks-container .card .card-action {
         padding: .5rem;
+        overflow: hidden;
     }
         #bookmarks-container .card .card-action .activator {
             cursor: pointer;
+        }
+        #bookmarks-container .card .card-action .folder-name {
+            display: block;
+            height: 25px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 7.5rem;
         }
     #bookmarks-container .card .card-reveal .card-title {
         font-size: 1rem;

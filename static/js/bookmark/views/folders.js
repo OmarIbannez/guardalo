@@ -50,7 +50,11 @@ var FoldersView = Marionette.CompositeView.extend({
         folder = new Folder({
             'name': folderName
         });
-        folder.save();
+        folder.save(null, {
+            success: function () {
+                App.vent.trigger('bookmark:addNewFolder', folder);
+            }
+        });
         this.collection.add(folder);
         this.ui.folderInput.val('');
         this.toggleFolderForm();
