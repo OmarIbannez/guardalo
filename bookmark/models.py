@@ -29,4 +29,4 @@ class Bookmark(BaseModel):
         return self.__unicode__()
 
     class Meta:
-        pass
+        ordering = ('-created_at',)
