@@ -12,9 +12,16 @@ class Link:
             'Connection': 'close',
             'DNT': '1',
         }
-        if not 'http' in url:
-            url = 'http://' + url
-        r = requests.get(url, headers=headers)
+        if not 'http' in url: url = 'http://' + url
+        r = None
+
+        try:
+            r = requests.get(url, headers=headers)
+        except:
+            r = requests.get(url)
+
+        if r == None: return None
+
         r.encoding = 'utf-8'
         page = MetadataParser(html=r.text)
 
