@@ -9,12 +9,10 @@ from django.conf import settings
 class SaveBookmark(View):
 
     def get(self, request, url):
-        url = request.get_full_path()[1:]
-        link = Link(url=url)
-        '''try:
+        try:
             link = Link(url=url)
         except Exception as e:
-            return redirect(settings.LOGIN_REDIRECT_URL)'''
+            return redirect(settings.LOGIN_REDIRECT_URL)
 
         bookmark = BookmarkModel(
             url = link.url,

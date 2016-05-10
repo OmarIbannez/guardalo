@@ -33,5 +33,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^bookmark/', include(bookmark_urls)),
     url(r'^$', login_required(Bookmark.as_view(), login_url='login'), name='mainpage'),
-    url(r'^(?P<url>.*)/$', login_required(SaveBookmark.as_view(), login_url='login')),
+    url(r'^(?P<url>(.*))$', login_required(SaveBookmark.as_view(), login_url='login')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
