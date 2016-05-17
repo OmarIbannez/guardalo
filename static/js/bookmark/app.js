@@ -17,6 +17,7 @@ App.addInitializer(function(options) {
     });
 
     /* Folders */
+    App.current_folder = null;
     App.folders = new Folders();
     App.folders.fetch({
         success: function() {

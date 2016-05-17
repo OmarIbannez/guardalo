@@ -19,3 +19,8 @@
     margin: 1.9rem 0;
     float: right;
 }
+
+#folders-container li .remove,
+#folders-container li .edit {
+    display: none;
+}
