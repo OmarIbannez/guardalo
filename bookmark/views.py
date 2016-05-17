@@ -9,6 +9,7 @@ from django.conf import settings
 class SaveBookmark(View):
 
     def get(self, request, url):
+        url = request.get_full_path()[1:]
         try:
             link = Link(url=url)
         except Exception as e:
