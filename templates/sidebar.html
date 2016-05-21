@@ -28,6 +28,13 @@
 
 <script id="folder-template" type="text/template">
     <a class="white-text light name" href="#"><%= name %></a>
-    <a href="#" class="edit"><i class="material-icons tiny white-text">edit</i></a>
-    <a href="#" class="remove"><i class="material-icons tiny white-text">clear</i></a>
+    <div class="edit-form">
+        <input type="text" class="white-text edit-folder-input">
+        <a href="#" class="edit-folder blue-text">edit</a>
+        <a href="#" class="cancel-edit-folder red-text">cancel</a>
+    </div>
+    <div class="options">
+        <a href="#" class="edit"><i class="material-icons tiny white-text right">edit</i></a>
+        <a href="#" class="remove"><i class="material-icons tiny white-text right">clear</i></a>
+    </div>
 </script>

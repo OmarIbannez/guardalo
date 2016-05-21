@@ -24,3 +24,17 @@
 #folders-container li .edit {
     display: none;
 }
+
+.edit-form {
+    display: none;
+}
+    .edit-form .edit-folder {
+        text-transform: uppercase;
+        text-decoration: underline;
+        margin: 1.9rem 0;
+    }
+    .edit-form .cancel-edit-folder {
+        text-transform: uppercase;
+        text-decoration: underline;
+        margin: 1.9rem 0;
+    }

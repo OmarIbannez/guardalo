@@ -4,16 +4,19 @@ var FolderView = Marionette.ItemView.extend({
     tagName: 'li',
 
     ui: {
-        'name': '.name',
+        'folderName': '.name',
         'edit': '.edit',
-        'remove': '.remove'
+        'remove': '.remove',
+        'editForm': '.edit-form',
+        'folderOptions': '.options'
     },
 
     events: {
-        'click @ui.name': 'fetchFolder',
+        'click @ui.folderName': 'fetchFolder',
         'mouseover': 'toggleOptions',
         'mouseout': 'toggleOptions',
         'click @ui.remove': 'removeFolder',
+        'click @ui.edit': 'openEditForm',
     },
 
     fetchFolder: function(event) {
@@ -36,6 +39,13 @@ var FolderView = Marionette.ItemView.extend({
             }
             this.model.destroy();
         }
+    },
+
+    openEditForm: function(event) {
+        event.preventDefault();
+        this.ui.folderName.hide();
+        this.ui.editForm.show();
+        this.ui.folderOptions.hide();
     }
 });
 
