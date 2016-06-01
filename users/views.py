@@ -11,7 +11,7 @@ def user_login(request):
         username = request.POST['username']
         password = request.POST['password']
 
-        user = authenticate(username=username, password=password)
+        user = authenticate(username=username.lower(), password=password)
 
         if not user:
             return redirect(settings.LOGIN_URL)
@@ -44,6 +44,7 @@ def user_register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             del form.cleaned_data['confirm_password']
+            form.cleaned_data['username'] = form.cleaned_data['username'].lower()
             new_user = User.objects.create_user(**form.cleaned_data)
             user = authenticate(
                 username=new_user.username,

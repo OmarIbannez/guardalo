@@ -19,7 +19,7 @@ class UserRegisterForm(forms.ModelForm):
         if self.cleaned_data['confirm_password'] != self.cleaned_data['password']:
             raise forms.ValidationError("Passwords don't match")
 
-        if User.objects.filter(username=self.cleaned_data['username']).exists():
+        if User.objects.filter(username=self.cleaned_data['username'].lower()).exists():
             raise forms.ValidationError("A user with this Username already exists")
 
         if User.objects.filter(email=self.cleaned_data['email']).exists():
