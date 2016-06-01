@@ -8,7 +8,10 @@ var FolderView = Marionette.ItemView.extend({
         'edit': '.edit',
         'remove': '.remove',
         'editForm': '.edit-form',
-        'folderOptions': '.options'
+        'folderOptions': '.options',
+        'editFolderInput': '.edit-folder-input',
+        'cancelEditForm': '.cancel-edit-folder',
+        'editFolder': '.edit-folder',
     },
 
     events: {
@@ -17,6 +20,12 @@ var FolderView = Marionette.ItemView.extend({
         'mouseout': 'toggleOptions',
         'click @ui.remove': 'removeFolder',
         'click @ui.edit': 'openEditForm',
+        'click @ui.cancelEditForm': 'cancelEditForm',
+        'click @ui.editFolder': 'editFolder',
+    },
+
+    onRender: function() {
+        this.ui.folderOptions.hide();
     },
 
     fetchFolder: function(event) {
@@ -26,8 +35,9 @@ var FolderView = Marionette.ItemView.extend({
     },
 
     toggleOptions: function(event) {
-        this.ui.edit.toggle();
-        this.ui.remove.toggle();
+        if (this.ui.editForm.is(':visible') == false) {
+            this.ui.folderOptions.toggle();
+        }
     },
 
     removeFolder: function(event) {
@@ -43,10 +53,25 @@ var FolderView = Marionette.ItemView.extend({
 
     openEditForm: function(event) {
         event.preventDefault();
+        this.ui.editFolderInput.val(this.ui.folderName.text());
         this.ui.folderName.hide();
         this.ui.editForm.show();
         this.ui.folderOptions.hide();
-    }
+
+    },
+
+    cancelEditForm: function(event) {
+        this.ui.folderName.show();
+        this.ui.editForm.hide();
+        this.ui.folderOptions.show();
+    },
+
+    editFolder: function(event) {
+        this.model.set('name', this.ui.editFolderInput.val());
+        this.ui.folderName.text(this.ui.editFolderInput.val());
+        this.model.save();
+        this.cancelEditForm();
+    },
 });
 
 

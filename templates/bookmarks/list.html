@@ -49,6 +49,7 @@
             <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
             <div class="input-field">
                 <select class="browser-default bookmark-folder">
+                    <option></option>
                     <% _.each(folders, function(fld) { %>
                         <option value="<%= fld.id %>" <% if (fld.id == folder) { %> selected="selected" <% } %>>
                             <%= fld.name %>

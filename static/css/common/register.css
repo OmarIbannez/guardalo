@@ -3,6 +3,15 @@ form {
     margin: 10rem auto;
 }
 
+
 form input:focus, form input {
+    color: #fff;
+}
+
+.helptext {
+    display: none;
+}
+
+.errorlist li {
     color: #fff;
 }

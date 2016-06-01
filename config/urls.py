@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from bookmark import urls as bookmark_urls
 from bookmark.views import SaveBookmark, Bookmark
-from users.views import user_login, user_logout
+from users.views import user_login, user_logout, user_register
 from django.contrib.auth.decorators import login_required
 from webapp.views import SettingsView, ImportBookmarks
 
@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^settings/import-bookmarks/$', login_required(ImportBookmarks.as_view(), login_url='login'), name='import-bookmarks'),
     url(r'^login/$', user_login, name='login'),
     url(r'^logout/$', user_logout, name='logout'),
+    url(r'^register/$', user_register, name='register'),
     url(r'^admin/', admin.site.urls),
     url(r'^bookmark/', include(bookmark_urls)),
     url(r'^$', login_required(Bookmark.as_view(), login_url='login'), name='mainpage'),

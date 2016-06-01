@@ -8,7 +8,7 @@
         <!-- CSS  -->
         <link type="text/css" rel="stylesheet" href="{% static 'css/vendor/materialize/materialize.min.css' %}"  media="screen,projection"/>
         <link type="text/css" rel="stylesheet" href="{% static 'css/common/common.css' %}"  media="screen,projection"/>
-        <link type="text/css" rel="stylesheet" href="{% static 'css/common/login.css' %}"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{% static 'css/common/register.css' %}"  media="screen,projection"/>
     </head>
     <body class="dark-background">
         <!-- Main container -->
@@ -16,16 +16,21 @@
             <div class="section">
                 <div class="row">
                     <div class="col s12 m12 l12">
-                        <form method="post" action="{% url 'login' %}">
+                        <form method="post" action="{% url 'register' %}">
                             {% csrf_token %}
-                            <input id="id_email" maxlength="254" name="email" type="text" placeholder="E-mail" autocomplete="off"/>
-                            <input id="id_password" name="password" type="password" placeholder="Password" />
+                            {{ form.as_p }}
                             {% if form.errors %}
-                                <p class="red-text darken-1">Your email and password didn't match. Please try again.</p>
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <div class="alert alert-error">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+
                             {% endif %}
-                            <a href="{% url 'register' %}" class="light blue-grey-text left">register</a>
                             <input type="hidden" name="next" value="{{ next }}" />
-                            <button type="submit" class="btn waves-effect waves-light blue darken-0 right">Login</button>
+                            <button type="submit" class="btn waves-effect waves-light blue darken-0 right">Register</button>
                         </form>
                     </div>
                 </div>

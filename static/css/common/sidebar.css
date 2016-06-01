@@ -20,13 +20,11 @@
     float: right;
 }
 
-#folders-container li .remove,
-#folders-container li .edit {
-    display: none;
-}
-
 .edit-form {
     display: none;
+}
+.options {
+    display: inline-block;
 }
     .edit-form .edit-folder {
         text-transform: uppercase;

@@ -3,6 +3,7 @@ from django.conf import settings
 from django.shortcuts import redirect
 from django.shortcuts import render
 from users.models import User
+from users.forms import UserRegisterForm
 
 
 def user_login(request):
@@ -40,3 +41,20 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect(settings.LOGIN_URL)
+
+
+def user_register(request):
+    form = UserRegisterForm()
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            del form.cleaned_data['confirm_password']
+            new_user = User.objects.create_user(**form.cleaned_data)
+            user = authenticate(
+                username=new_user.username,
+                password=form.cleaned_data['password']
+            )
+            login(request, user)
+            return redirect(settings.LOGIN_REDIRECT_URL)
+
+    return render(request, 'auth/register.html', {'form': form})
