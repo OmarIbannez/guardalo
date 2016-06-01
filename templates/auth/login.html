@@ -18,10 +18,10 @@
                     <div class="col s12 m12 l12">
                         <form method="post" action="{% url 'login' %}">
                             {% csrf_token %}
-                            <input id="id_email" maxlength="254" name="email" type="text" placeholder="E-mail" autocomplete="off"/>
+                            <input id="id_username" maxlength="254" name="username" type="text" placeholder="Username" autocomplete="off"/>
                             <input id="id_password" name="password" type="password" placeholder="Password" />
                             {% if form.errors %}
-                                <p class="red-text darken-1">Your email and password didn't match. Please try again.</p>
+                                <p class="red-text darken-1">Your username and password didn't match. Please try again.</p>
                             {% endif %}
                             <a href="{% url 'register' %}" class="light blue-grey-text left">register</a>
                             <input type="hidden" name="next" value="{{ next }}" />

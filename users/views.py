@@ -8,15 +8,10 @@ from users.forms import UserRegisterForm
 
 def user_login(request):
     if request.method == 'POST':
-        email = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
 
-        try:
-            user = User.objects.get(email=email.lower())
-        except Exception as e:
-            return redirect(settings.LOGIN_URL)
-
-        user = authenticate(username=user.username, password=password)
+        user = authenticate(username=username, password=password)
 
         if not user:
             return redirect(settings.LOGIN_URL)
