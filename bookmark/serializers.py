@@ -4,6 +4,7 @@ from rest_framework.fields import CurrentUserDefault
 
 
 class BookmarkSerializer(serializers.ModelSerializer):
+
     thumbnail = serializers.SerializerMethodField()
     folder_name = serializers.SerializerMethodField()
 
@@ -17,7 +18,7 @@ class BookmarkSerializer(serializers.ModelSerializer):
             'thumbnail',
             'owner',
             'folder',
-            'folder_name'
+            'folder_name',
         )
 
     def get_thumbnail(self, obj):
@@ -28,7 +29,9 @@ class BookmarkSerializer(serializers.ModelSerializer):
     def get_folder_name(self, obj):
         if obj.folder: return obj.folder.name
 
+
 class FolderSerializer(serializers.ModelSerializer):
+
     owner = serializers.PrimaryKeyRelatedField(
         read_only=True,
         default=serializers.CurrentUserDefault()
@@ -39,5 +42,5 @@ class FolderSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'name',
-            'owner'
+            'owner',
         )

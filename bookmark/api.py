@@ -2,7 +2,6 @@ from bookmark.models import Bookmark, Folder
 from bookmark.serializers import BookmarkSerializer, FolderSerializer
 from rest_framework import viewsets
 from rest_framework import filters
-from users.models import User
 
 
 class BookmarkViewSet(viewsets.ModelViewSet):

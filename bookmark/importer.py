@@ -3,6 +3,7 @@ import codecs
 import argparse
 import time
 
+
 class Bookmark():
     def __init__(self, title, url, folder):
         self.title = title
@@ -11,6 +12,7 @@ class Bookmark():
 
     def __str__(self):
         return unicode(self.title + " " + self.url + " " + self.folder)
+
 
 class HtmlBookmarks():
     def __init__(self, html):
