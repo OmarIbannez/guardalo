@@ -54,3 +54,9 @@
 #bookmarks-area .row .col {
     width: 14rem;
 }
+
+#search-area #search-input {
+    width: 20rem;
+    font-weight: 300;
+    color: #fff;
+}

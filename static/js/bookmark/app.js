@@ -3,7 +3,8 @@
 // Config App area in the page
 App.addRegions({
     bookmarks_area: '#bookmarks-area',
-    folders_area: '#folders-area'
+    folders_area: '#folders-area',
+    search_area: '#search-area'
 });
 
 // Initialize application
@@ -29,7 +30,8 @@ App.addInitializer(function(options) {
         },
     });
 
-
+    /* Search */
+    App.search_area.show(new SearchView());
 });
 
 // Start Marionette application

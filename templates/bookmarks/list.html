@@ -19,14 +19,20 @@
 <!-- Bookmark JS --->
 <script type="text/javascript" src="{% static 'js/bookmark/views/bookmarks.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bookmark/views/folders.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bookmark/views/search.js' %}"></script>
 <!-- App Initializer -->
 <script type="text/javascript" src="{% static 'js/bookmark/app.js' %}"></script>
 {% endblock %}
 
 {% block content %}
+<div id="search-area"></div>
 <div id="bookmarks-area"></div>
 <div id="menu-area"></div>
+<div id="search-area"></div>
 
+<script id='search-template' type="text/template">
+    <input type="text" id="search-input" placeholder="search" />
+</script>
 <script id='bookmarks-template' type="text/template">
     <div class="row" id="bookmarks-container"></div>
 </script>

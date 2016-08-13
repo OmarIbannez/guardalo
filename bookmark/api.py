@@ -8,8 +8,10 @@ class BookmarkViewSet(viewsets.ModelViewSet):
 
     queryset = Bookmark.objects.all()
     serializer_class = BookmarkSerializer
-    filter_backends = (filters.DjangoFilterBackend,)
+    filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter, )
+    search_fields = ('title', 'description')
     filter_fields = ('folder',)
+
 
     def get_queryset(self):
         queryset = super(BookmarkViewSet, self).get_queryset()

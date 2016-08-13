@@ -10,6 +10,16 @@ var Bookmarks = Backbone.Collection.extend({
             reset: true
         });
         return result;
+    },
+
+    fetchSearch: function(search) {
+        var result = this.fetch({
+            data: {
+                search: search,
+            },
+            reset: true
+        });
+        return result;
     }
 
 });

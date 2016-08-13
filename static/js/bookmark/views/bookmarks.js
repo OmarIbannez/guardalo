@@ -62,6 +62,7 @@ var BookmarksView = Marionette.CompositeView.extend({
     initialize: function(options) {
         this.listenTo(App.vent, 'bookmarks:fetchFolder', this.fetchFolder);
         this.listenTo(App.vent, 'bookmarks:showAll', this.showAll);
+        this.listenTo(App.vent, 'bookmarks:searchBookmarks', this.searchBookmarks);
     },
 
     fetchFolder: function(folder) {
@@ -70,6 +71,10 @@ var BookmarksView = Marionette.CompositeView.extend({
 
     showAll: function() {
         this.collection.fetch({reset:true});
+    },
+
+    searchBookmarks: function(search) {
+        this.collection.fetchSearch(search);
     }
 
 });
