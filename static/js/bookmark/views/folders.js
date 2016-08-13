@@ -82,6 +82,7 @@ var FoldersView = Marionette.CompositeView.extend({
 
     ui: {
         'showAll': '#show-all',
+        'showNoFolder': '#show-no-folder',
         'toggleFolderForm': '#toggle-folder-form',
         'folderFormSection': '#folder-form-section',
         'folderInput': '#folder-input',
@@ -90,6 +91,7 @@ var FoldersView = Marionette.CompositeView.extend({
 
     events: {
         'click @ui.showAll': 'showAll',
+        'click @ui.showNoFolder': 'showNoFolder',
         'click @ui.toggleFolderForm': 'toggleFolderForm',
         'click @ui.save': 'save'
     },
@@ -97,6 +99,11 @@ var FoldersView = Marionette.CompositeView.extend({
     showAll: function(event) {
         event.preventDefault();
         App.vent.trigger('bookmarks:showAll');
+    },
+
+    showNoFolder: function(event) {
+        event.preventDefault();
+        App.vent.trigger('bookmarks:showNoFolder');
     },
 
     toggleFolderForm: function() {

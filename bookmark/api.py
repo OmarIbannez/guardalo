@@ -17,6 +17,9 @@ class BookmarkViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         if self.request.user.is_anonymous():
             raise NotAuthenticated
+        if 'no_folder' in self.request.query_params:
+            queryset = super(BookmarkViewSet, self).get_queryset()
+            return queryset.filter(owner=self.request.user, folder=None)
         queryset = super(BookmarkViewSet, self).get_queryset()
         return queryset.filter(owner=self.request.user)
 

@@ -20,6 +20,16 @@ var Bookmarks = Backbone.Collection.extend({
             reset: true
         });
         return result;
+    },
+
+    fetchNoFolder: function(search) {
+        var result = this.fetch({
+            data: {
+                no_folder: true,
+            },
+            reset: true
+        });
+        return result;
     }
 
 });
