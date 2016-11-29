@@ -1,8 +1,13 @@
 form {
-    width: 30rem;
     margin: 10rem auto;
 }
 
 form input:focus, form input {
     color: #fff;
+}
+
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 25% !important;
+    }
 }
