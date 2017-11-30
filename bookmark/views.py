@@ -15,9 +15,10 @@ class SaveBookmark(View):
         except Exception as e:
             return redirect(settings.LOGIN_REDIRECT_URL)
 
+        title = link.title or link.url
         bookmark = BookmarkModel(
             url=link.url,
-            title=link.title or link.url,
+            title=title[:200],
             description=link.description[:200],
             thumbnail=link.image,
             owner=self.request.user
