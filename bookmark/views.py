@@ -18,8 +18,8 @@ class SaveBookmark(View):
         title = link.title or link.url
         bookmark = BookmarkModel(
             url=link.url,
-            title=title[:200],
-            description=link.description[:200],
+            title=title[:255],
+            description=link.description,
             thumbnail=link.image,
             owner=self.request.user
         )
