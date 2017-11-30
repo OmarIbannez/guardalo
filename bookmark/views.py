@@ -16,10 +16,10 @@ class SaveBookmark(View):
             return redirect(settings.LOGIN_REDIRECT_URL)
 
         bookmark = BookmarkModel(
-            url = link.url,
-            title = link.title or link.url,
-            description = link.description,
-            thumbnail = link.image,
+            url=link.url,
+            title=link.title or link.url,
+            description=link.description[:1000],
+            thumbnail=link.image,
             owner=self.request.user
         )
         bookmark.save()
