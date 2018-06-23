@@ -14,9 +14,8 @@ class BookmarkViewSet(viewsets.ModelViewSet):
     search_fields = ('title', 'description')
     filter_fields = ('folder',)
 
-
     def get_queryset(self):
-        if self.request.user.is_anonymous():
+        if self.request.user.is_anonymous:
             raise NotAuthenticated
         if 'no_folder' in self.request.query_params:
             queryset = super(BookmarkViewSet, self).get_queryset()
@@ -31,7 +30,7 @@ class FolderViewSet(viewsets.ModelViewSet):
     serializer_class = FolderSerializer
 
     def get_queryset(self):
-        if self.request.user.is_anonymous():
+        if self.request.user.is_anonymous:
             raise NotAuthenticated
         queryset = super(FolderViewSet, self).get_queryset()
         return queryset.filter(owner=self.request.user)
