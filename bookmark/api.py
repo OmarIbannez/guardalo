@@ -3,13 +3,14 @@ from bookmark.serializers import BookmarkSerializer, FolderSerializer
 from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework.exceptions import NotAuthenticated
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class BookmarkViewSet(viewsets.ModelViewSet):
 
     queryset = Bookmark.objects.all()
     serializer_class = BookmarkSerializer
-    filter_backends = (filters.DjangoFilterBackend, filters.SearchFilter, )
+    filter_backends = (DjangoFilterBackend, filters.SearchFilter, )
     search_fields = ('title', 'description')
     filter_fields = ('folder',)
 
