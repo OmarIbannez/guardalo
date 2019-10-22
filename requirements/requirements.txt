@@ -8,7 +8,7 @@ djangorestframework==3.8.2
 gunicorn==19.8.1
 idna==2.7
 metadata-parser==0.9.20
-Pillow==5.1.0
+Pillow==6.2.0
 psycopg2-binary==2.7.5
 pytz==2018.4
 requests==2.19.1
