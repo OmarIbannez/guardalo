@@ -44,3 +44,7 @@ class FolderSerializer(serializers.ModelSerializer):
             'name',
             'owner',
         )
+
+    def create(self, validated_data):
+        validated_data['owner'] = self.context['request'].user
+        return super(FolderSerializer, self).create(validated_data)
