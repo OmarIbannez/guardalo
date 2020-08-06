@@ -30,9 +30,7 @@ class BookmarkSerializer(serializers.ModelSerializer):
 
 
 class FolderSerializer(serializers.ModelSerializer):
-    owner = serializers.PrimaryKeyRelatedField(
-        read_only=True, default=serializers.CurrentUserDefault()
-    )
+    owner = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Folder
