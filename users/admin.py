@@ -5,33 +5,32 @@ from users.models import User
 
 class CustomUserAdmin(UserAdmin):
     fieldsets = (
-        (None, {
-            'fields': ('username', 'password')
-        }),
-        (('Personal info'), {
-            'fields': (('first_name', 'middle_name', 'last_name'), 'photo', 'email',)
-        }),
-        (('Permissions'), {
-            'fields': (
-                'is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'
-            )
-        }),
-        (('Important dates'), {
-            'fields': ('last_login', 'date_joined')
-        }),
+        (None, {"fields": ("username", "password")}),
+        ("Personal info", {"fields": (("first_name", "last_name"), "email")}),
+        (
+            "Permissions",
+            {
+                "fields": (
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "groups",
+                    "user_permissions",
+                )
+            },
+        ),
+        ("Important dates", {"fields": ("last_login", "date_joined")}),
     )
 
     add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': (
-                'username',
-                'email',
-                'photo',
-                'password1',
-                'password2'
-            )
-        }),
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": ("username", "email", "password1", "password2"),
+            },
+        ),
     )
+
 
 admin.site.register(User, CustomUserAdmin)

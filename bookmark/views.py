@@ -7,7 +7,6 @@ from django.conf import settings
 
 
 class SaveBookmark(View):
-
     def get(self, request, url):
         url = request.get_full_path()[1:]
         try:
@@ -21,7 +20,7 @@ class SaveBookmark(View):
             title=title[:255],
             description=link.description,
             thumbnail=link.image,
-            owner=self.request.user
+            owner=self.request.user,
         )
         bookmark.save()
 
@@ -29,4 +28,4 @@ class SaveBookmark(View):
 
 
 class Bookmark(TemplateView):
-    template_name = 'bookmarks/list.html'
+    template_name = "bookmarks/list.html"

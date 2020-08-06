@@ -26,13 +26,21 @@ from webapp.views import SettingsView, ImportBookmarks
 
 
 urlpatterns = [
-    url(r'^settings/$', login_required(SettingsView.as_view(), login_url='login'), name='settings'),
-    url(r'^settings/import-bookmarks/$', login_required(ImportBookmarks.as_view(), login_url='login'), name='import-bookmarks'),
-    url(r'^login/$', user_login, name='login'),
-    url(r'^logout/$', user_logout, name='logout'),
-    url(r'^register/$', user_register, name='register'),
-    url(r'^admin/', admin.site.urls),
-    url(r'^bookmark/', include(bookmark_urls)),
-    url(r'^$', login_required(Bookmark.as_view(), login_url='login'), name='mainpage'),
-    url(r'^(?P<url>(.*))$', login_required(SaveBookmark.as_view(), login_url='login')),
+    url(
+        r"^settings/$",
+        login_required(SettingsView.as_view(), login_url="login"),
+        name="settings",
+    ),
+    url(
+        r"^settings/import-bookmarks/$",
+        login_required(ImportBookmarks.as_view(), login_url="login"),
+        name="import-bookmarks",
+    ),
+    url(r"^login/$", user_login, name="login"),
+    url(r"^logout/$", user_logout, name="logout"),
+    url(r"^register/$", user_register, name="register"),
+    url(r"^admin/", admin.site.urls),
+    url(r"^bookmark/", include(bookmark_urls)),
+    url(r"^$", login_required(Bookmark.as_view(), login_url="login"), name="mainpage"),
+    url(r"^(?P<url>(.*))$", login_required(SaveBookmark.as_view(), login_url="login")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
