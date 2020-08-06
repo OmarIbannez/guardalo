@@ -15,7 +15,7 @@ class ImportBookmarks(View):
         f = request.FILES["file"]
         html = ""
         for chunk in f.chunks():
-            html += chunk
+            html += str(chunk)
         bookmarks = HtmlBookmarks(html)
         for bookmark in bookmarks.parse():
             folder = None
