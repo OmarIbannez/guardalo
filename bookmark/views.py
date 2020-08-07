@@ -9,9 +9,9 @@ from django.conf import settings
 class SaveBookmark(View):
     def get(self, request, url):
         url = request.get_full_path()[1:]
-        try:
-            link = Link(url=url)
-        except Exception as e:
+        link = Link(url=url)
+        link.fetch()
+        if link.is_invalid:
             return redirect(settings.LOGIN_REDIRECT_URL)
 
         title = link.title or link.url

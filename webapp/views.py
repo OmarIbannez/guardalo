@@ -1,4 +1,5 @@
 from django.views.generic import View
+from django.db import DatabaseError
 from bookmark.models import Bookmark as BookmarkModel, Folder
 from django.views.generic import TemplateView
 from django.http import HttpResponse
@@ -24,7 +25,7 @@ class ImportBookmarks(View):
                     folder = Folder.objects.get(
                         name=bookmark.folder, owner=self.request.user
                     )
-                except Exception as e:
+                except Folder.DoesNotExist:
                     folder = Folder(name=bookmark.folder, owner=self.request.user)
                     folder.save()
             mark = BookmarkModel(
@@ -35,7 +36,7 @@ class ImportBookmarks(View):
             )
             try:
                 mark.save()
-            except Exception as e:
+            except DatabaseError:
                 message = "Opps, Something fail."
                 response = json.dumps({"False": True, "message": message})
                 return HttpResponse(response)
