@@ -17,6 +17,8 @@ class Bookmark(BaseModel):
     description = models.TextField(null=True, blank=True)
     thumbnail = models.URLField(null=True, blank=True, max_length=1000)
     folder = models.ForeignKey(Folder, null=True, blank=True, on_delete=models.CASCADE)
+    fetched = models.BooleanField(default=False)
+    connection_error = models.BooleanField(default=False)
 
     def __str__(self):
         return "{0}".format(self.title)

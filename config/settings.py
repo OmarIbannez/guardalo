@@ -16,7 +16,7 @@ DJANGO_APPS = (
     "django.contrib.staticfiles",
 )
 
-THIRD_PARTY_APPS = ("django_extensions", "rest_framework")
+THIRD_PARTY_APPS = ("django_extensions", "rest_framework", "kronos")
 
 LOCAL_APPS = ("core", "users", "webapp", "bookmark")
 
