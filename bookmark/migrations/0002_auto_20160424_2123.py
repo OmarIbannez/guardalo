@@ -8,13 +8,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookmark', '0001_initial'),
+        ("bookmark", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='bookmark',
-            name='image',
-            field=models.ImageField(max_length=255, upload_to=b''),
+            model_name="bookmark",
+            name="image",
+            field=models.ImageField(max_length=255, upload_to=b""),
         ),
     ]

@@ -25,7 +25,6 @@ def mock_stackoverflow_response(*args, **kwargs):
 
 
 class TestSaveBookmark(TestCase):
-
     def setUp(self):
         # Patch requests.get
         patcher = patch("requests.get")
@@ -38,10 +37,12 @@ class TestSaveBookmark(TestCase):
         self.client.login(username="test_user", password="12345")
 
     def test_save_bookmark_success(self):
-        expected_title = "Stack Overflow - Where Developers Learn, " \
-                         "Share, & Build Careers"
-        expected_description = "Stack Overflow | The World’s " \
-                               "Largest Online Community for Developers"
+        expected_title = (
+            "Stack Overflow - Where Developers Learn, " "Share, & Build Careers"
+        )
+        expected_description = (
+            "Stack Overflow | The World’s " "Largest Online Community for Developers"
+        )
         self.mock_call.side_effect = mock_stackoverflow_response
         response = self.client.get("/{0}".format("https://stackoverflow.com"))
         bookmark = Bookmark.objects.first()
@@ -49,4 +50,3 @@ class TestSaveBookmark(TestCase):
         self.assertEqual(expected_title, bookmark.title)
         self.assertEqual(expected_description, bookmark.description)
         self.assertEquals(response.status_code, 302)
-

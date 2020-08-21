@@ -11,27 +11,46 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('bookmark', '0005_remove_bookmark_image'),
+        ("bookmark", "0005_remove_bookmark_image"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Folder',
+            name="Folder",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('modified_at', models.DateTimeField(auto_now=True)),
-                ('is_deleted', models.BooleanField(default=False)),
-                ('name', models.CharField(max_length=255)),
-                ('owner', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("modified_at", models.DateTimeField(auto_now=True)),
+                ("is_deleted", models.BooleanField(default=False)),
+                ("name", models.CharField(max_length=255)),
+                (
+                    "owner",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False,},
         ),
         migrations.AddField(
-            model_name='bookmark',
-            name='folder',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='bookmark.Folder'),
+            model_name="bookmark",
+            name="folder",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="bookmark.Folder",
+            ),
         ),
     ]

@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookmark', '0010_auto_20171130_1840'),
+        ("bookmark", "0010_auto_20171130_1840"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='bookmark',
-            name='is_deleted',
+            model_name="bookmark",
+            name="is_deleted",
             field=models.BooleanField(blank=True, default=False),
         ),
         migrations.AlterField(
-            model_name='folder',
-            name='is_deleted',
+            model_name="folder",
+            name="is_deleted",
             field=models.BooleanField(blank=True, default=False),
         ),
     ]

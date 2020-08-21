@@ -8,12 +8,11 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookmark', '0008_auto_20160428_2259'),
+        ("bookmark", "0008_auto_20160428_2259"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='bookmark',
-            options={'ordering': ('-created_at',)},
+            name="bookmark", options={"ordering": ("-created_at",)},
         ),
     ]

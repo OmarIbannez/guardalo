@@ -8,12 +8,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bookmark', '0004_bookmark_thumbnail'),
+        ("bookmark", "0004_bookmark_thumbnail"),
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='bookmark',
-            name='image',
-        ),
+        migrations.RemoveField(model_name="bookmark", name="image",),
     ]
